@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   const introText = document.getElementById("intro-text");
   const introScreen = document.getElementById("intro");
