@@ -1,26 +1,38 @@
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("Welcome to Azizul's Portfolio!");
 
-document.addEventListener("DOMContentLoaded", function () {
-  const introText = document.getElementById("intro-text");
-  const introScreen = document.getElementById("intro");
-  const mainContent = document.getElementById("main-content");
+    // Animate project cards on scroll
+    const projectCards = document.querySelectorAll('.project-card');
+    const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px'
+    };
 
-  const words = ["Hello", "Bonjour", "Ciao"];
-  let index = 0;
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
 
-  function showNextWord() {
-    if (index < words.length) {
-      introText.textContent = words[index];
-      introText.style.animation = "none";
-      void introText.offsetWidth;
-      introText.style.animation = "fadeInOut 2s ease forwards";
+    projectCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px)';
+        card.style.transition = 'all 0.6s ease-out';
+        observer.observe(card);
+    });
 
-      index++;
-      setTimeout(showNextWord, 2000);
-    } else {
-      introScreen.style.display = "none";
-      mainContent.style.display = "block";
-    }
-  }
-
-  showNextWord();
+    // Add hover effect to project cards
+    projectCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+        });
+    });
 });
