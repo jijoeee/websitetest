@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             careerContent.style.display = 'none';
 
             // Show the appropriate content based on the clicked tag
-            if (tag.textContent === 'IT Project') {
+            if (tag.textContent === 'Achievement') {
                 projectsContent.style.display = 'block';
             } else if (tag.textContent === 'Technical Expertise') {
                 skillsContent.style.display = 'block';
