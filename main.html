@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azizul - Main</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Audio Player -->
+    <audio id="background-audio" loop>
+        <source src="audio.mpeg" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Audio Control Buttons (play/pause + mute) -->
+    <div class="audio-control">
+        <button id="audio-toggle" class="audio-toggle-btn" aria-label="Play/Pause Audio">
+            <i class="fas fa-play" id="audio-icon"></i>
+        </button>
+        <button id="mute-btn" class="audio-toggle-btn" aria-label="Mute/Unmute Audio">
+            <i class="fas fa-volume-up" id="mute-icon"></i>
+        </button>
+    </div>
+
+    <header>
+        <div class="network-nodes">
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+            <div class="network-node"></div>
+        </div>
+        <div class="engineering-icons">
+            <i class="fas fa-microchip engineering-icon"></i>
+            <i class="fas fa-server engineering-icon"></i>
+            <i class="fas fa-network-wired engineering-icon"></i>
+            <i class="fas fa-code engineering-icon"></i>
+            <i class="fas fa-cogs engineering-icon"></i>
+            <i class="fas fa-database engineering-icon"></i>
+            <i class="fas fa-shield-alt engineering-icon"></i>
+            <i class="fas fa-cloud engineering-icon"></i>
+            <!-- Additional icons for more coverage -->
+            <i class="fas fa-wifi engineering-icon"></i>
+            <i class="fas fa-router engineering-icon"></i>
+            <i class="fas fa-ethernet engineering-icon"></i>
+            <i class="fas fa-terminal engineering-icon"></i>
+            <i class="fas fa-keyboard engineering-icon"></i>
+            <i class="fas fa-mouse engineering-icon"></i>
+            <i class="fas fa-hdd engineering-icon"></i>
+            <i class="fas fa-memory engineering-icon"></i>
+            <i class="fas fa-cpu engineering-icon"></i>
+            <i class="fas fa-usb engineering-icon"></i>
+            <i class="fas fa-bluetooth engineering-icon"></i>
+            <i class="fas fa-satellite engineering-icon"></i>
+            <i class="fas fa-satellite-dish engineering-icon"></i>
+        </div>
+        <div class="circuit-lines">
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
+            <!-- Additional circuit lines for more coverage -->
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
+        </div>
+        <div class="data-flow">
+            <div class="data-dot"></div>
+            <div class="data-dot"></div>
+            <div class="data-dot"></div>
+            <!-- Additional data flow elements -->
+            <div class="data-dot"></div>
+            <div class="data-dot"></div>
+            <div class="data-dot"></div>
+            <div class="data-dot"></div>
+        </div>
+        <div class="container">
+            <h1>Azizul</h1>
+            <p class="subtitle">Network Engineer</p>
+            <div class="header-cta">
+                <a href="#contact" class="cta-button">Get In Touch</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <div class="container">
+                <div class="intro-content">
+                    <h2>IP Engineering | Datacom | Automation</h2>
+                    <p class="tagline">Specializing in Metro-E and Enterprise IP networks, data communication technologies, and network automation.</p>
+                    <div class="expertise-areas">
+                        <span class="expertise-tag">About Me</span>
+                        <span class="expertise-tag">Career Summary</span>
+                        <span class="expertise-tag">Project & Achievement</span>
+                        <span class="expertise-tag">Technical Expertise</span>
+                        <span class="expertise-tag">Simulation Lab</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="about-content" class="hidden-content">
+            <section class="about-section">
+                <div class="container">
+                    <div class="about-content">
+                        <div class="profile-picture">
+                            <img src="pic1.png" alt="Muhammad Azizul" class="round-image">
+                        </div>
+                        <div class="about-text">
+                            <h2>About Me</h2>
+                            <p>"Hi everyone, I'm Muhammad Azizul — a Datacom Engineer dedicated in solving network challenges through automation, scripting, and smart infrastructure design.</p>
+                            <p>Always ready to push my limit and find better ways to work!"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="certificates-section">
+                        <h3>Certificates</h3>
+                        <div class="certificate-grid">
+                            <div class="certificate-item">
+                                <div class="certificate-image">
+                                    <img src="pic5.png" alt="First-Class Honors Bachelor of Electrical Engineering Degree" class="certificate-img">
+                                </div>
+                                <div class="certificate-details">
+                                    <h4>First-Class Honors Degree - Bachelor of Electrical Engineering</h4>
+                                    <p>Universiti Teknologi Malaysia</p>
+                                </div>
+                            </div>
+                            
+                            <div class="certificate-item" onclick="window.open('cert2.png', '_blank')">
+                                <div class="certificate-image">
+                                    <img src="pic3.png" alt="HCIA - Routing & Switching" class="certificate-img">
+                                </div>
+                                <div class="certificate-details">
+                                    <h4>HCIA - Routing & Switching</h4>
+                                    <p>Huawei</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="career-content" class="hidden-content">
+            <section class="career-section">
+                <div class="container">
+                    <h2><i class="fas fa-briefcase"></i> Career Summary</h2>
+                    
+                    <div class="career-item">
+                        <div class="company-logo">
+                            <img src="pic2.png" alt="TNB Logo" class="company-image">
+                        </div>
+                        <div class="career-details">
+                            <h3>TNB - INTERNSHIP</h3>
+                            <p class="duration">JUN 2019 – AUG 2019</p>
+                            <ul>
+                                <li>Joined 3 different technical department which are Fault Finder, SAVR (Sesalur Atas Voltan Rendah) and substation.</li>
+                                <li>Carried out technical tasks for each department.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="career-item">
+                        <div class="company-logo">
+                            <img src="pic3.png" alt="HW Logo" class="company-image">
+                        </div>
+                        <div class="career-details">
+                            <h3>HUAWEI - NETWORK ENGINEER</h3>
+                            <p class="duration">OCT 2020 – OCT 2022</p>
+                            <ul>
+                                <li>TM Stellar Delivery Project - commissioning Huawei switches and servers for TM Alpha cloud expansion.</li>
+                                <li>TM NMS Modernization - migrating thousand of FTTH and MSAN devices from old NMS U2000 to new NMS NCE, leading the team in technical aspect and communication with customer.</li>
+                                <li>Digi iBeam IPRAN - responsible in topo reengineering, link upgrade, service migration and new Huawei router integration.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="career-item">
+                        <div class="company-logo">
+                            <img src="pic4.png" alt="TIME Logo" class="company-image">
+                        </div>
+                        <div class="career-details">
+                            <h3>TIME - IP PROVISIONING ENGINEER</h3>
+                            <p class="duration">OCT 2022 – AUG 2025</p>
+                            <ul>
+                                <li>Responsible in provisioning TIME Metro E Enterprise services (Internet Direct, Lease Line, IPVPN, VoIP & IP Transit)</li>
+                                <li>Carry out TIME MPLS Metro-E troubleshooting and deep dive inside customer requirement regarding service integration.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="career-item">
+                        <div class="company-logo">
+                            <img src="pic6.png" alt="ZTE Logo" class="company-image">
+                        </div>
+                        <div class="career-details">
+                            <h3>ZTE - IP ENGINEER</h3>
+                            <p class="duration">AUG 2025 – PRESENT</p>
+                            <ul>
+                                <li>TM NGT Migration Project – responsible for migrating TM legacy Metro-E services (NPE & EPE) to new ZTE AGG devices under the Next Generation Transport (NGT) network.</li>
+                                <li>Performed end-to-end service migration for Enterprise, Wholesale and Mobile services including Internet Direct, IPVPN (MPLS L3VPN), IP Transit, VoIP, High-Speed Internet (HSI), FTTH broadband, IPTV, Multicast VPN (MVPN), as well as mobile backhaul and voice-over-broadband services (VOBB, NGBH)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="projects-content" class="hidden-content">
+            <section class="projects container">
+                <h2><i class="fas fa-laptop-code"></i> Key Projects & Achievements</h2>
+
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>TM Stellar Delivery Project</h3>
+                        <ul>
+                            <li>Managed to commission Huawei switches and servers for TM Alpha cloud expansion</li>
+                            <li>Managed to provide project LLD and materials</li>
+                            <li>Performed Hardware Acceptance Test (HAT) on installed devices.</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span>Server</span>
+                            <span>Huawei</span>
+                            <span>Cloud</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3>TM NMS Modernization</h3>
+                        <ul>
+                            <li>Migrated thousands of network devices from U2000 to new NMS NCE</li>
+                            <li>Managed to integrate customer OSS with NCE</li>
+                            <li>Obtained TM Appreciation letter from TM General Manager</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span>NMS</span>
+                            <span>System Monitoring</span>
+                            <span>OSS</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Digi iBeam IPRAN</h3>
+                        <ul>
+                            <li>Fully applied IP knowledge: OSPF, BGP, MPLS, L2VPN and L3VPN.</li>
+                            <li>Implemented Digi IPRAN topology reengineering and link upgrade.</li>
+                            <li>Managed to complete many migration without causing network interruption.</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span>Datacom</span>
+                            <span>Router</span>
+                            <span>IPRAN</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>TIME Metro-E Enterprise Project</h3>
+                        <ul>
+                            <li>Delivered large-scale Enterprise IPVPN (MPLS L3VPN) deployments for MBSB across 100+ customer sites</li>
+                            <li>Completed PLUS MMOC modernization project with 200+ sites, including topology changes and service cutover</li>
+                            <li>Migrated critical enterprise Bank Negara Malaysia (BNM) IPVPN services from legacy infrastructure to new Metro-E network</li>
+                            <li>Performed numerous enterprise service provisioning, testing, and live migration support with minimal customer impact</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span>Enterprise</span>
+                            <span>Metro-E</span>
+                            <span>IP core</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h3>TM Next Generation Transport (NGT) Migration</h3>
+                        <ul>
+                            <li>Migrating legacy Metro-E services (EPE / NPE) to ZTE NGT aggregation network</li>
+                            <li>Delivering end-to-end service migration for Enterprise, Wholesale and Mobile services</li>
+                            <li>Performing pre-migration analysis, data mapping and post-migration verification</li>
+                            <li>Acted as technical PIC during migration windows, handling troubleshooting and recovery</li>
+                            <li>Executing migrations with minimal service impact under strict change windows</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span>Service</span>
+                            <span>Migration</span>
+                            <span>Transport</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Network Operations Automation</h3>
+                        <ul>
+                            <li>Developed Python-based automation tools for network inventory extraction and service consistency checks</li>
+                            <li>Automated pre-check and post-check workflows for large-scale MPLS / Metro-E migrations</li>
+                            <li>Improved migration success rate by reducing manual intervention and accelerating verification cycles</li>
+                            <li>Supported operations teams with custom tooling during high-risk maintenance windows</li>
+                            <li>Reduced manual operation tasks by 50% through automated solution</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>VBA</span>
+                            <span>Automation</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Self IT Project</h3>
+                        <ul>
+                            <li>Provision Home Network with secure remote access</li>
+                            <li>Implemented Wake On LAN (WOL) on remote server</li>
+                            <li>Self-Hosted remote storage and Backup solution</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span>Home Network</span>
+                            <span>WOL</span>
+                            <span>OpenVPN</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="skills-content" class="hidden-content">
+            <section id="skills" class="skills-section">
+                <div class="container">
+                    <h2><i class="fas fa-tools"></i> Technical Expertise</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>Network Infrastructure</h3>
+                            <ul>
+                                <li>Routing & Switching (Enterprise & Service Provider)</li>
+                                <li>MPLS Layer 2 VPN (VLL, VPLS, VSI, EVPN)</li>
+                                <li>MPLS Layer 3 VPN (IPVPN, VRF-based services)</li>
+                                <li>BGP (eBGP/iBGP, Full Route & Default Route)</li>
+                                <li>IP Transit & Internet Edge Architecture</li>
+                                <li>Metro-E & Access Network Integration (NID, UPE, OLT, MSAN)</li>
+                                <li>Network Redundancy & High Availability (LAG, Dual-homing, Primary/Secondary paths)</li>
+                                <li>MTU, QoS & Traffic Engineering in MPLS / Segment Routing (SR-MPLS) networks</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Automation & Scripting</h3>
+                            <ul>
+                                <li>Python (network automation, data validation, service checks)</li>
+                                <li>Excel Automation (VBA, complex formulas for migration analysis)</li>
+                                <li>Bash Scripting (operational & support tasks)</li>
+                                <li>PowerShell (tooling & system automation)</li>
+                                <li>Network Data Processing (service extraction, comparison & verification)</li>
+                                <li>Automation for Migration Readiness, Post-Migration Validation & Audit</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Security</h3>
+                            <ul>
+                                <li>IPsec (Site-to-Site & Transport concepts)</li>
+                                <li>OpenVPN (Remote access & secure tunnels)</li>
+                                <li>Access Control (ACLs, traffic filtering)</li>
+                                <li>Encryption Fundamentals (data-in-transit protection)</li>
+                                <li>Network Segmentation & VRF-based isolation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="datacom-lab-content" class="hidden-content">
+            <section class="datacom-lab-section">
+                <div class="container">
+                    <h2><i class="fas fa-flask"></i> Network Simulation Lab</h2>
+                    <p class="lab-intro">Explore my hands-on experience on various datacom topic through practical lab configurations and verifications.</p>
+                    
+                    <div class="lab-project">
+                        <h3>VPLS Martini - L2VPN</h3>
+                        
+                        <div class="lab-topology">
+                            <div class="topology-left">
+                                <h4><i class="fas fa-project-diagram"></i> Topology</h4>
+                                <div class="topology-image">
+                                    <img src="lab/vplsmartinitopo.png" alt="VPLS Martini Topology" class="lab-image">
+                                </div>
+                            </div>
+
+                            <div class="lab-toggle" aria-hidden="false">
+                                <button id="lab-toggle-btn" class="lab-toggle-btn" aria-expanded="false" aria-controls="cfg-1 ver-1" aria-label="Show lab configuration and verification">
+                                    <span class="toggle-icon" aria-hidden="true">+</span>
+                                </button>
+                                <div id="lab-message" class="lab-message">
+                                    Martini VPLS Lab. Used for point to multipoint connection.
+                                    <br>
+                                    Protocol used:
+                                    <ul style="margin:0.5rem 0 0 1rem; padding:0;">
+                                        <li>ISIS</li>
+                                        <li>MPLS</li>
+                                        <li>MPLS LDP</li>
+                                        <li>MPLS VSI</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cfg-1" class="lab-configuration collapsible-content collapsed">
+                            <h4><i class="fas fa-code"></i> Highlighted Configuration</h4>
+                            <div class="config-code">
+                                <pre><code>#
+vsi L2VPN-VPLS
+ pwsignal ldp
+  vsi-id 1
+  peer 5.5.5.5
+  peer 9.9.9.9
+#</code></pre>
+                            </div>
+                        </div>
+
+                        <div id="ver-1" class="lab-verification collapsible-content collapsed">
+                            <h4><i class="fas fa-check-circle"></i> Verification</h4>
+                            <div class="verification-images">
+                                <div class="verification-image">
+                                    <img src="lab/vplsmartini1.png" alt="VPLS Martini Verification 1" class="lab-image">
+                                </div>
+                                <div class="verification-image">
+                                    <img src="lab/vplsmartini2.png" alt="VPLS Martini Verification 2" class="lab-image">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- VPLS Kompella - L2VPN (new) -->
+                        <div class="lab-project">
+                            <h3>VPLS Kompella - L2VPN</h3>
+
+                            <div class="lab-topology">
+                                <div class="topology-left">
+                                    <h4><i class="fas fa-project-diagram"></i> Topology</h4>
+                                    <div class="topology-image">
+                                            <img src="lab/vplskompellatopo.png" alt="VPLS Kompella Topology" class="lab-image">
+                                        </div>
+                                </div>
+
+                                    <div class="lab-toggle" aria-hidden="false">
+                                        <button class="lab-toggle-btn" aria-expanded="false" aria-controls="cfg-2 ver-2" aria-label="Show lab configuration and verification">
+                                            <span class="toggle-icon" aria-hidden="true">+</span>
+                                        </button>
+                                        <div id="lab-message-2" class="lab-message">
+                                            Kompella VPLS Lab. Used for point to multipoint connection.
+                                            <br>
+                                            Protocol used:
+                                            <ul style="margin:0.5rem 0 0 1rem; padding:0;">
+                                                <li>OSPF</li>
+                                                <li>MPLS</li>
+                                                <li>MPLS LDP</li>
+                                                <li>MPLS VSI</li>
+                                                <li>BGP</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                            </div>
+
+                                <div id="cfg-2" class="lab-configuration collapsible-content collapsed">
+                                    <h4><i class="fas fa-code"></i> Highlighted Configuration</h4>
+                                    <div class="config-code">
+                                        <pre><code>MAC1
+
+    #
+    bgp 100 
+     peer 33.33.33.33 as-number 100
+     peer 33.33.33.33 connect-interface LoopBack0
+     # 
+     ipv4-family unicast
+      undo synchronization
+      peer 33.33.33.33 enable
+     #
+     vpls-family
+      policy vpn-target
+      peer 33.33.33.33 enable
+    #
+
+    #
+    vsi kompella1
+     pwsignal bgp
+      route-distinguisher 100:1
+      vpn-target 100:1 import-extcommunity
+      vpn-target 100:1 export-extcommunity
+      site 1 range 5 default-offset 0
+    #</code></pre>
+                                    </div>
+                                </div>
+
+                            <div id="ver-2" class="lab-verification collapsible-content collapsed">
+                                <h4><i class="fas fa-check-circle"></i> Verification</h4>
+                                <div class="verification-images">
+                                    <div class="verification-image">
+                                        <img src="lab/vplskompella1.png" alt="VPLS Kompella Verification 1" class="lab-image">
+                                    </div>
+                                    <div class="verification-image">
+                                        <img src="lab/vplskompella2.png" alt="VPLS Kompella Verification 2" class="lab-image">
+                                    </div>
+                                    <div class="verification-image">
+                                        <img src="lab/vplskompella3.png" alt="VPLS Kompella Verification 3" class="lab-image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="lab-wip">Work in progress...</p>
+                </div>
+            </section>
+        </div>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2><i class="fas fa-envelope"></i> Let's Connect</h2>
+                <div class="contact-content">
+                    <p>Have any questions, queries, or something to share? Feel free to reach out using the contact details below.</p>
+                    <div class="contact-buttons">
+                        <a href="mailto:azizul12345293@gmail.com" class="contact-button email-button">
+                            <i class="fas fa-envelope"></i> Email Me
+                        </a>
+                        <a href="https://www.linkedin.com/in/muhammad-azizul-bin-azizan-8247071a3" class="contact-button linkedin-button">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="https://wa.me/601140718324?text=Hi%20Azizul%2C%20would%20you%20mind%20sending%20me%20your%20resume%3F%20Thanks%21" class="contact-button whatsapp-button">
+                            <i class="fab fa-whatsapp"></i> Download CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2026 Azizul | Network Engineer</p>
+                <div class="footer-links">
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- Lightbox modal for enlarging lab images -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <button class="lightbox-close" aria-label="Close image">&times;</button>
+        <img class="lightbox-img" src="" alt="Enlarged image">
+    </div>
+</body>
+</html>

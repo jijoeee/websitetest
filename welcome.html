@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Azizul's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 35%, #1a2a6c 65%, #0f172a 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 12s ease infinite;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+        canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            display: block;
+            pointer-events: none;
+        }
+        .greeting-container {
+            text-align: center;
+            color: #f8fafc;
+            background: rgba(15, 23, 42, 0.55);
+            padding: 3.5rem 4rem;
+            border-radius: 12px;
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 210, 255, 0.05);
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            animation: cardGlow 6s ease-in-out infinite, float 3s ease-in-out infinite;
+        }
+        @keyframes cardGlow {
+            0%, 100% { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 210, 255, 0.05); }
+            50% { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 40px -10px rgba(0, 210, 255, 0.15); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .greeting-text {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            opacity: 0;
+            transform: translateY(12px);
+            animation: fadeInUp 0.6s ease 0.5s forwards;
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+            text-shadow: 0 0 8px rgba(0, 210, 255, 0.25), 0 0 16px rgba(0, 210, 255, 0.15);
+            filter: drop-shadow(0 0 3px rgba(0, 210, 255, 0.2));
+            transition: text-shadow 0.4s ease, filter 0.4s ease;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .greeting-container.glow-near .greeting-text {
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.7), 0 0 40px rgba(0, 210, 255, 0.5), 0 0 60px rgba(0, 210, 255, 0.3), 0 0 80px rgba(255, 255, 255, 0.2);
+            filter: drop-shadow(0 0 8px rgba(0, 210, 255, 0.6));
+        }
+        .welcome-text {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(12px);
+            animation: fadeInUp 0.6s ease 2s forwards;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 0 0 6px rgba(0, 210, 255, 0.2), 0 0 12px rgba(0, 210, 255, 0.12);
+            filter: drop-shadow(0 0 2px rgba(0, 210, 255, 0.2));
+            transition: text-shadow 0.4s ease, filter 0.4s ease;
+            white-space: nowrap;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .greeting-container.glow-near .welcome-text {
+            text-shadow: 0 0 12px rgba(0, 210, 255, 0.6), 0 0 24px rgba(0, 210, 255, 0.4), 0 0 36px rgba(255, 255, 255, 0.2);
+            filter: drop-shadow(0 0 4px rgba(0, 210, 255, 0.5));
+        }
+        .accent-line-wrap { margin: 1.5rem auto 2rem auto; opacity: 0; animation: fadeInUp 0.5s ease 0.4s forwards; }
+        .accent-line {
+            position: relative;
+            width: 360px; height: 3px; margin: 0 auto; border-radius: 2px;
+            background: rgba(0, 210, 255, 0.25);
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
+            overflow: hidden;
+        }
+        .accent-line::after {
+            content: '';
+            position: absolute; left: 0; top: 0;
+            width: 28%; height: 100%; border-radius: 2px;
+            background: linear-gradient(90deg, rgba(0, 210, 255, 0.5), rgba(0, 210, 255, 0.95), rgba(0, 210, 255, 0.5));
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.7);
+            animation: laserSpot 5.5s linear infinite;
+        }
+        @keyframes laserSpot {
+            0% { left: 0%; opacity: 0; }
+            6% { opacity: 1; }
+            94% { opacity: 1; }
+            100% { left: 72%; opacity: 0; }
+        }
+        .enter-button {
+            margin-top: 0;
+            padding: 1rem 3rem;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            background: rgba(0, 210, 255, 0.08);
+            border: 2px solid rgba(0, 210, 255, 0.5);
+            color: #00d2ff;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.6, 1);
+            opacity: 0;
+            transform: translateY(12px);
+            animation: fadeInUp 0.6s ease 3.5s forwards;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3), inset 0 0 15px rgba(0, 210, 255, 0.05);
+        }
+        .enter-button:hover {
+            background: rgba(0, 210, 255, 0.15);
+            border-color: rgba(0, 210, 255, 0.8);
+            color: #00ffff;
+            transform: translateY(-4px);
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.6), 0 15px 35px rgba(0, 210, 255, 0.2), inset 0 0 20px rgba(0, 210, 255, 0.1);
+        }
+        .greeting-container.random-glow .greeting-text {
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.7), 0 0 40px rgba(0, 210, 255, 0.5), 0 0 60px rgba(0, 210, 255, 0.3), 0 0 80px rgba(255, 255, 255, 0.2);
+            filter: drop-shadow(0 0 8px rgba(0, 210, 255, 0.6));
+            transition: text-shadow 1s ease, filter 1s ease;
+        }
+        .greeting-container.random-glow .welcome-text {
+            text-shadow: 0 0 12px rgba(0, 210, 255, 0.6), 0 0 24px rgba(0, 210, 255, 0.4), 0 0 36px rgba(255, 255, 255, 0.2);
+            filter: drop-shadow(0 0 4px rgba(0, 210, 255, 0.5));
+            transition: text-shadow 1s ease, filter 1s ease;
+        }
+        .enter-button.random-glow {
+            background: rgba(0, 210, 255, 0.15);
+            border-color: rgba(0, 210, 255, 0.8);
+            color: #00ffff;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.6), 0 0 50px rgba(0, 210, 255, 0.3), inset 0 0 20px rgba(0, 210, 255, 0.1);
+            transition: all 1s ease;
+        }
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .welcome-audio-control {
+            position: fixed;
+            left: 0.75rem;
+            bottom: 0.75rem;
+            display: flex;
+            gap: 0.3rem;
+            z-index: 9999;
+        }
+        .welcome-audio-control .welcome-audio-btn {
+            width: 22px;
+            height: 22px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15), inset 0 0 20px rgba(255,255,255,0.05);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .welcome-audio-control .welcome-audio-btn i {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 9px;
+            text-shadow: 0 0 8px rgba(0, 210, 255, 0.6), 0 0 12px rgba(255, 255, 255, 0.4);
+            filter: drop-shadow(0 0 2px rgba(0, 210, 255, 0.5));
+        }
+        .welcome-audio-control .welcome-audio-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(0, 210, 255, 0.4);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.2), 0 0 20px rgba(0, 210, 255, 0.2), inset 0 0 20px rgba(255,255,255,0.08);
+        }
+        .welcome-audio-control .welcome-audio-btn.playing {
+            background: rgba(0, 210, 255, 0.12);
+            border-color: rgba(0, 210, 255, 0.5);
+            box-shadow: 0 2px 10px rgba(0, 210, 255, 0.25), inset 0 0 20px rgba(0, 210, 255, 0.1);
+        }
+        @media (max-width: 768px) {
+            .welcome-audio-control { left: 0.6rem; bottom: 0.6rem; }
+            .welcome-audio-control .welcome-audio-btn { width: 20px; height: 20px; }
+            .welcome-audio-control .welcome-audio-btn i { font-size: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        try {
+            if (!sessionStorage.getItem('landingSeen')) {
+                sessionStorage.setItem('landingSeen','1');
+                window.location.href = 'landing.html';
+            }
+        } catch (e) {}
+    </script>
+    <audio id="welcome-audio" loop>
+        <source src="audio.mpeg" type="audio/mpeg">
+    </audio>
+    <div class="welcome-audio-control">
+        <button type="button" id="welcome-audio-toggle" class="welcome-audio-btn" aria-label="Play/Pause">
+            <i class="fas fa-play" id="welcome-audio-icon"></i>
+        </button>
+        <button type="button" id="welcome-mute-btn" class="welcome-audio-btn" aria-label="Mute/Unmute" style="display:none;">
+            <i class="fas fa-volume-up" id="welcome-mute-icon"></i>
+        </button>
+    </div>
+    <canvas id="bg"></canvas>
+    <div class="greeting-container" id="greeting-container">
+        <h1 class="greeting-text">Hello!</h1>
+        <p class="welcome-text">Welcome to my Portfolio</p>
+        <div class="accent-line-wrap"><div class="accent-line"></div></div>
+        <a href="main.html" class="enter-button" id="enter-portfolio-link">Enter</a>
+    </div>
+    <script>
+    var clickCtx = null;
+    function playRoboticClick() {
+        try {
+            if (!clickCtx) clickCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (clickCtx.state === 'suspended') clickCtx.resume();
+            var now = clickCtx.currentTime;
+            var g = clickCtx.createGain();
+            g.gain.setValueAtTime(0.25, now);
+            g.gain.exponentialRampToValueAtTime(0.01, now + 0.06);
+            g.connect(clickCtx.destination);
+            var osc = clickCtx.createOscillator();
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(800, now);
+            osc.frequency.exponentialRampToValueAtTime(200, now + 0.06);
+            osc.connect(g);
+            osc.start(now);
+            osc.stop(now + 0.06);
+        } catch (e) {}
+    }
+    var futuristicCtx = null;
+    var lastFuturisticTime = 0;
+    function playFuturisticHoverSound() {
+        var now = Date.now();
+        if (now - lastFuturisticTime < 800) return;
+        lastFuturisticTime = now;
+        try {
+            if (!futuristicCtx) futuristicCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (futuristicCtx.state === 'suspended') futuristicCtx.resume();
+            var t = futuristicCtx.currentTime;
+            var dur = 0.7;
+            var master = futuristicCtx.createGain();
+            master.gain.setValueAtTime(0, t);
+            master.gain.linearRampToValueAtTime(0.22, t + 0.08);
+            master.gain.exponentialRampToValueAtTime(0.008, t + dur);
+            master.connect(futuristicCtx.destination);
+            var low = futuristicCtx.createOscillator();
+            low.type = 'sine';
+            low.frequency.setValueAtTime(220, t);
+            low.frequency.linearRampToValueAtTime(320, t + dur * 0.5);
+            var lowG = futuristicCtx.createGain();
+            lowG.gain.setValueAtTime(0, t);
+            lowG.gain.linearRampToValueAtTime(0.5, t + 0.06);
+            lowG.gain.exponentialRampToValueAtTime(0.05, t + dur);
+            low.connect(lowG);
+            lowG.connect(master);
+            low.start(t);
+            low.stop(t + dur);
+            var high = futuristicCtx.createOscillator();
+            high.type = 'sine';
+            high.frequency.setValueAtTime(1800, t);
+            high.frequency.linearRampToValueAtTime(2400, t + 0.2);
+            high.frequency.setValueAtTime(2000, t + dur * 0.6);
+            var highG = futuristicCtx.createGain();
+            highG.gain.setValueAtTime(0, t);
+            highG.gain.linearRampToValueAtTime(0.18, t + 0.1);
+            highG.gain.linearRampToValueAtTime(0.06, t + 0.35);
+            highG.gain.exponentialRampToValueAtTime(0.002, t + dur);
+            high.connect(highG);
+            highG.connect(master);
+            high.start(t);
+            high.stop(t + dur);
+            var mid = futuristicCtx.createOscillator();
+            mid.type = 'sine';
+            mid.frequency.setValueAtTime(520, t);
+            mid.frequency.linearRampToValueAtTime(880, t + dur * 0.4);
+            var midG = futuristicCtx.createGain();
+            midG.gain.setValueAtTime(0, t);
+            midG.gain.linearRampToValueAtTime(0.12, t + 0.05);
+            midG.gain.exponentialRampToValueAtTime(0.02, t + dur);
+            mid.connect(midG);
+            midG.connect(master);
+            mid.start(t);
+            mid.stop(t + dur);
+        } catch (e) {}
+    }
+    (function(){
+        var canvas = document.getElementById('bg');
+        var ctx = canvas.getContext('2d');
+        var DPR = Math.max(1, window.devicePixelRatio || 1);
+        var w, h;
+        var particles = [];
+        var MOUSE = {x:-9999,y:-9999,active:false};
+        function resize(){
+            w = canvas.width = Math.floor(window.innerWidth * DPR);
+            h = canvas.height = Math.floor(window.innerHeight * DPR);
+            canvas.style.width = window.innerWidth + 'px';
+            canvas.style.height = window.innerHeight + 'px';
+            for(var i=0;i<particles.length;i++){
+                particles[i].x = (particles[i].xNorm * w) || (Math.random()*w);
+                particles[i].y = (particles[i].yNorm * h) || (Math.random()*h);
+            }
+        }
+        function rand(min,max){return min + Math.random()*(max-min)}
+        function create(count){
+            particles = [];
+            for(var i=0;i<count;i++){
+                var px = Math.random()*w;
+                var py = Math.random()*h;
+                var s = rand(1.2,6.5) * DPR;
+                particles.push({
+                    x:px,y:py,xNorm:px/w,yNorm:py/h,
+                    vx:rand(-0.05, -0.3)*DPR, vy:rand(-0.06,0.06)*DPR,
+                    size:s,base:s,alpha:rand(0.12,0.95)
+                });
+            }
+        }
+        function step(){
+            ctx.clearRect(0,0,w,h);
+            for(var i=0;i<particles.length;i++){
+                var p = particles[i];
+                var dx = p.x - MOUSE.x, dy = p.y - MOUSE.y;
+                var dist = Math.sqrt(dx*dx+dy*dy)||1;
+                if(MOUSE.active && dist < 160*DPR){
+                    var force = (1 - dist/(160*DPR)) * 0.8 * DPR;
+                    p.vx += (dx/dist) * force;
+                    p.vy += (dy/dist) * force;
+                }
+                p.vx += -0.0006*DPR + (Math.random()-0.5)*0.0006*DPR;
+                p.vx *= 0.995; p.vy *= 0.995;
+                p.x += p.vx; p.y += p.vy;
+                if(p.x < -40*DPR) p.x += w + 80*DPR;
+                if(p.x > w + 40*DPR) p.x -= w + 80*DPR;
+                if(p.y < -40*DPR) p.y += h + 80*DPR;
+                if(p.y > h + 40*DPR) p.y -= h + 80*DPR;
+                var grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size*6);
+                grd.addColorStop(0, 'rgba(0,210,255,' + (p.alpha*0.9) + ')');
+                grd.addColorStop(0.2, 'rgba(0,210,255,' + (p.alpha*0.35) + ')');
+                grd.addColorStop(1, 'rgba(2,12,22,0)');
+                ctx.beginPath();
+                ctx.fillStyle = grd;
+                ctx.arc(p.x, p.y, p.size*6, 0, Math.PI*2);
+                ctx.fill();
+            }
+            requestAnimationFrame(step);
+        }
+        function init(){
+            resize();
+            create(Math.round((window.innerWidth * window.innerHeight) / 8000));
+            step();
+        }
+        window.addEventListener('resize', function(){ resize(); });
+        window.addEventListener('mousemove', function(e){ MOUSE.x = e.clientX * DPR; MOUSE.y = e.clientY * DPR; MOUSE.active = true; });
+        window.addEventListener('mouseleave', function(){ MOUSE.active = false; MOUSE.x = -9999; MOUSE.y = -9999; });
+        init();
+    })();
+    (function() {
+        var greetingEl = document.getElementById('greeting-container');
+        var wasGlowNear = false;
+        document.addEventListener('mousemove', function(e) {
+            if (greetingEl) {
+                var r = greetingEl.getBoundingClientRect();
+                var cx = r.left + r.width / 2;
+                var cy = r.top + r.height / 2;
+                var dx = e.clientX - cx;
+                var dy = e.clientY - cy;
+                var dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 220) {
+                    if (!wasGlowNear) {
+                        wasGlowNear = true;
+                        playFuturisticHoverSound();
+                    }
+                    greetingEl.classList.add('glow-near');
+                } else {
+                    wasGlowNear = false;
+                    greetingEl.classList.remove('glow-near');
+                }
+            }
+        });
+    })();
+    (function() {
+        var greetingEl = document.getElementById('greeting-container');
+        function triggerRandomGlow() {
+            if (greetingEl) greetingEl.classList.add('random-glow');
+            setTimeout(function() {
+                if (greetingEl) greetingEl.classList.remove('random-glow');
+            }, 1500);
+        }
+        setTimeout(function() {
+            triggerRandomGlow();
+            setInterval(triggerRandomGlow, 10000);
+        }, 4000);
+    })();
+    document.addEventListener('click', function(e) {
+        var t = e.target;
+        if (t.closest('button, a[href], .enter-button, .welcome-audio-btn')) playRoboticClick();
+    });
+    (function() {
+        var audio = document.getElementById('welcome-audio');
+        var toggleBtn = document.getElementById('welcome-audio-toggle');
+        var toggleIcon = document.getElementById('welcome-audio-icon');
+        var muteBtn = document.getElementById('welcome-mute-btn');
+        var muteIcon = document.getElementById('welcome-mute-icon');
+        var enterLink = document.getElementById('enter-portfolio-link');
+        if (!audio || !toggleBtn) return;
+        audio.muted = true;
+        audio.volume = 0.5;
+        toggleBtn.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.muted = false;
+                if (muteIcon) muteIcon.className = 'fas fa-volume-up';
+                audio.play();
+                if (toggleIcon) toggleIcon.className = 'fas fa-pause';
+                toggleBtn.classList.add('playing');
+                if (muteBtn) muteBtn.style.display = 'inline-flex';
+            } else {
+                audio.pause();
+                if (toggleIcon) toggleIcon.className = 'fas fa-play';
+                toggleBtn.classList.remove('playing');
+                if (muteBtn) muteBtn.style.display = 'none';
+            }
+        });
+        if (muteBtn) muteBtn.addEventListener('click', function() {
+            audio.muted = !audio.muted;
+            if (muteIcon) muteIcon.className = audio.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+        });
+        if (enterLink) enterLink.addEventListener('click', function(e) {
+            if (!audio.paused) {
+                e.preventDefault();
+                try {
+                    sessionStorage.setItem('portfolioAudioPlaying', '1');
+                    sessionStorage.setItem('portfolioAudioTime', String(audio.currentTime));
+                    sessionStorage.setItem('portfolioAudioMuted', audio.muted ? '1' : '0');
+                } catch (err) {}
+                window.location.href = enterLink.getAttribute('href');
+            }
+        });
+    })();
+    </script>
+</body>
+</html>
